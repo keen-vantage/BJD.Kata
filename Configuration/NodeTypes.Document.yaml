@@ -3,6 +3,8 @@
 'BJD.Kata:Overview':
   superTypes:
     'TYPO3.Neos.NodeTypes:Page': TRUE
+    'Nieuwenhuizen.BuJitsuDo:HeaderImageMixin': TRUE
+    'Nieuwenhuizen.BuJitsuDo:BackgroundColorMixin': TRUE
   childNodes:
     main: ~
   ui:
@@ -12,16 +14,70 @@
       'TYPO3.Neos.NodeTypes:Page': FALSE
       'BJD.Kata:KataType': TRUE
       '*': FALSE
+  properties:
+    description:
+      type: 'string'
+      defaultValue: "Een overzicht van Jiu Jitsu kata's"
+      ui:
+        reloadIfChanged: TRUE
+        label: 'Omschrijving'
+        inlineEditable: TRUE
+        inspector:
+          group: document
+          position: 20
 
 'BJD.Kata:KataType':
   superTypes:
     'TYPO3.Neos.NodeTypes:Page': TRUE
-  childNodes:
-    main: ~
   ui:
     label: 'Kata type'
+    icon: 'icon-file'
   constraints:
     nodeTypes:
       'TYPO3.Neos.NodeTypes:Page': FALSE
-      'BJD.Kata:Kata': TRUE
+      'BJD.Kata:KataSeries': TRUE
       '*': FALSE
+
+'BJD.Kata:KataSeries':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Page': TRUE
+  ui:
+    label: 'Kata serie'
+    icon: 'icon-file'
+  constraints:
+    nodeTypes:
+      'TYPO3.Neos.NodeTypes:Page': FALSE
+      'BJD.Kata:Attack': TRUE
+      '*': FALSE
+  properties:
+    description:
+      type: 'string'
+      ui:
+        label: 'Omschrijving'
+        inlineEditable: TRUE
+        inspector:
+          group: document
+          position: 20
+
+'BJD.Kata:Attack':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Page': TRUE
+  ui:
+    label: 'Aanval'
+  properties:
+    title:
+      type: 'string'
+    description:
+      type: 'string'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        reloadIfChanged: true
+        label: 'Afbeelding'
+        inspector:
+          group: document
+          position: 1
+          editorOptions:
+            features:
+              crop: true
+              resize: true

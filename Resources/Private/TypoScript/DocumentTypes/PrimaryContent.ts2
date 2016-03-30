@@ -1,0 +1,5 @@
+prototype(TYPO3.Neos:PrimaryContent).KataOverview {
+    condition = ${q(documentNode).is('[instanceof BJD.Kata:Overview]')}
+    type = 'BJD.Kata:Overview'
+    @position = 'start'
+}

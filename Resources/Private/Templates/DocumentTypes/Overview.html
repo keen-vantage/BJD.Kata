@@ -21,23 +21,27 @@
         <f:for each="{kataTypes}" as="type" iteration="iterator">
             <dd class="accordion-navigation active">
                 <a href="#panel{iterator.index}">
-                    <h2>{type.label}</h2>
+                    <div class="row">
+                        <div class="columns small-12">
+                            <h2>{type.label}</h2>
+                        </div>
+                    </div>
                 </a>
                 <div id="panel{iterator.index}" class="content">
                     <div class="row background-gray-light">
-                        <div class="columns small-101 large-10 small-offset-1">
-                            <dl>
-                                <f:for each="{kataSeries}" as="series">
+                        <div class="columns small-10 small-offset-1">
+                            <h3>Series</h3>
+                            <f:for each="{kataSeries}" as="series">
+                                <ul>
                                     <f:if condition="{series.parent.identifier} == {type.identifier}">
-                                        <dd>
+                                        <div class="row">
                                             <neos:link.node node="{series}">
-                                            <h3>{series.label}</h3>
-                                                {series.properties.description}
+                                                <li>{series.label} | {series.properties.description}</li>
                                             </neos:link.node>
-                                        </dd>
+                                        </div>
                                     </f:if>
-                                </f:for>
-                            </dl>
+                                </ul>
+                            </f:for>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,27 @@
+---
+
+'BJD.Kata:Overview':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Page': TRUE
+  childNodes:
+    main: ~
+  ui:
+    label: 'Kata overzicht'
+  constraints:
+    nodeTypes:
+      'TYPO3.Neos.NodeTypes:Page': FALSE
+      'BJD.Kata:KataType': TRUE
+      '*': FALSE
+
+'BJD.Kata:KataType':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Page': TRUE
+  childNodes:
+    main: ~
+  ui:
+    label: 'Kata type'
+  constraints:
+    nodeTypes:
+      'TYPO3.Neos.NodeTypes:Page': FALSE
+      'BJD.Kata:Kata': TRUE
+      '*': FALSE

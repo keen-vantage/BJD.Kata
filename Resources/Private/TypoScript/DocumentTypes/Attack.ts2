@@ -1,0 +1,24 @@
+prototype(BJD.Kata:Attack) >
+prototype(BJD.Kata:Attack) < prototype(Nieuwenhuizen.BuJitsuDo:PageContent) {
+    templatePath = 'resource://BJD.Kata/Private/Templates/DocumentTypes/Attack.html'
+    kataType = ${q(documentNode).parents('[instanceof BJD.Kata:KataType]').get(0)}
+    series = ${q(documentNode).parent('[instanceof BJD.Kata:KataSeries]').get(0)}
+    title = ${q(node).property('title')}
+    description = ${q(node).property('description') != '' ? q(node).property('description') : 'Omschrijving'}
+
+    @process.contentElementWrapping {
+        expression = TYPO3.Neos:ContentElementWrapping
+        @position = 'end 999999999'
+    }
+
+    @cache {
+        mode = 'cached'
+        entryTags {
+            1 = ${'Node_' + documentNode.identifier}
+            2 = ${'DescendantOf_' + documentNode.identifier}
+            3 = ${'NodeType_BJD.Kata:KataType'}
+            4 = ${'NodeType_BJD.Kata:KataSeries'}
+            5 = ${'NodeType_BJD.Kata:Attack'}
+        }
+    }
+}

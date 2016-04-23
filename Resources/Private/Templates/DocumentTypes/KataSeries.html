@@ -1,0 +1,32 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+<div class="row container" xmlns:f="http://www.w3.org/1999/XSL/Transform">
+    <div class="default-header" style="max-width: 100%; background: url('{m:uri.image(image: headerImage)}') no-repeat center center; background-size: cover !important;">
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns small-12">
+        {breadcrumbMenu -> f:format.raw()}
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <h1>{node.parent.properties.title -> neos:link.node(node: node.parent)} | {node.properties.title}</h1>
+        <h2><i>{node.properties.description}</i></h2>
+        <hr />
+    </div>
+</div>
+<section class="row">
+    <div class="columns small-12">
+        <f:for each="{attacks}" as="attack">
+            <ul>
+                <li>
+                    <neos:link.node node="{attack}">
+                        {attack.label}
+                    </neos:link.node>
+                </li>
+            </ul>
+        </f:for>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+<div class="row container" xmlns:f="http://www.w3.org/1999/XSL/Transform">
+    <div class="default-header" style="max-width: 100%; background: url('{m:uri.image(image: headerImage)}') no-repeat center center; background-size: cover !important;">
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns small-12">
+        {breadcrumbMenu -> f:format.raw()}
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <h1>{node.properties.title}</h1>
+    </div>
+</div>
+<section class="row" data-content="event-list">
+    <dl class="accordion columns small-12" data-accordion>
+        <f:for each="{kataSeries}" as="series" iteration="iterator">
+            <dd class="accordion-navigation active">
+                <a href="#panel{iterator.index}">
+                    <div class="row">
+                        <div class="columns small-12">
+                            <h2>{series.label}</h2>
+                        </div>
+                    </div>
+                </a>
+                <div id="panel{iterator.index}" class="content">
+                    <div class="row background-gray-light">
+                        <div class="columns small-10 small-offset-1">
+                            <h3>Aanvallen</h3>
+                            <f:for each="{attacks}" as="attack">
+                                <ul>
+                                    <f:if condition="{attack.parent.identifier} == {series.identifier}">
+                                        <div class="row">
+                                            <neos:link.node node="{attack}">
+                                                <li>{attack.label}</li>
+                                            </neos:link.node>
+                                        </div>
+                                    </f:if>
+                                </ul>
+                            </f:for>
+                        </div>
+                    </div>
+                </div>
+            </dd>
+        </f:for>
+    </dl>
+</section>

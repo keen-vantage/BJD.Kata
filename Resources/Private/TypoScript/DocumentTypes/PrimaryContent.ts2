@@ -3,3 +3,21 @@ prototype(TYPO3.Neos:PrimaryContent).KataOverview {
     type = 'BJD.Kata:Overview'
     @position = 'start'
 }
+
+prototype(TYPO3.Neos:PrimaryContent).KataType {
+    condition = ${q(documentNode).is('[instanceof BJD.Kata:KataType]')}
+    type = 'BJD.Kata:KataType'
+    @position = 'start'
+}
+
+prototype(TYPO3.Neos:PrimaryContent).Series {
+    condition = ${q(documentNode).is('[instanceof BJD.Kata:KataSeries]')}
+    type = 'BJD.Kata:KataSeries'
+    @position = 'start'
+}
+
+prototype(TYPO3.Neos:PrimaryContent).Attack {
+    condition = ${q(documentNode).is('[instanceof BJD.Kata:Attack]')}
+    type = 'BJD.Kata:Attack'
+    @position = 'start'
+}

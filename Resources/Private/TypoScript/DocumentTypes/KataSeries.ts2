@@ -1,0 +1,16 @@
+prototype(BJD.Kata:KataSeries) >
+prototype(BJD.Kata:KataSeries) < prototype(Nieuwenhuizen.BuJitsuDo:PageContent) {
+    templatePath = 'resource://BJD.Kata/Private/Templates/DocumentTypes/KataSeries.html'
+    attacks = ${q(documentNode).find('[instanceof BJD.Kata:Attack]').get()}
+
+    @cache {
+        mode = 'cached'
+        entryTags {
+            1 = ${'Node_' + documentNode.identifier}
+            2 = ${'DescendantOf_' + documentNode.identifier}
+            3 = ${'NodeType_BJD.Kata:KataType'}
+            4 = ${'NodeType_BJD.Kata:KataSeries'}
+            5 = ${'NodeType_BJD.Kata:Attack'}
+        }
+    }
+}

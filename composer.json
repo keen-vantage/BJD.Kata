@@ -1,9 +1,13 @@
 {
-    "name": "bjd/kata",
+    "name": "keenvantage/bjd-kata",
     "type": "typo3-flow-package",
-    "description": "Add description here",
+    "license": "MIT",
+    "description": "Neos package to add Kata series for the BU JITSU DO website",
     "require": {
-        "typo3/flow": "*"
+        "typo3/flow": "*",
+        "typo3/neos": "*",
+        "typo3/typo3cr": "*",
+        "nieuwenhuizen/cr": "*"
     },
     "autoload": {
         "psr-4": {
